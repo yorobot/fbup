@@ -1,15 +1,4 @@
-# rubyconf Skripts
-
-Use:
-
-```
-$ ruby ./build.rb
-```
+#  Football.db Update (FB Up) Scripts & Tools
 
 
-Note: Make sure these planetruby repos are present:
-
-- `/awesome-events`
-- `/rubyconf.json`
-- `/planetruby.github.io`
 
