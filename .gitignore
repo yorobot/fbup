@@ -1,0 +1,21 @@
+#######
+## ignore dotenv (.env)
+.env
+
+####
+#  ignore logs and output
+logs.txt
+errors.txt
+o/
+o2/
+dl/
+tmp/
+tmp2/
+tmp3/
+temp/
+
+####
+# ignore all databases
+*.db
+
+

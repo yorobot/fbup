@@ -1,0 +1,27 @@
+##
+#  ruby -I ..\worldfootball\lib ..\worldfootball\bin\wfb -f patch.csv
+#  ruby -I ..\sportdb-writers\lib ..\sportdb-writers\bin\fbgen -f patch.csv
+
+league, seasons
+
+# es.cup, 2020/21 2021/22 2022/23 2023/24 2024/25
+# it.cup, 2020/21 2021/22 2022/23 2023/24 2024/25
+
+# mx.1,   2024/25 2023/2024 2022/2023 2021/2022 2020/2021 2019/2020 2018/2019
+# mx.2,   2024/25 2023/2024 2022/2023 2021/2022 2020/2021
+
+# mx.1,    2023/2024
+
+# ar.1,      2020
+
+
+
+caf.cl,   2023/24 2024/25
+afl,      2023
+
+
+
+# co.1,    2023 2024     ## Colombia
+
+# al.1, 2023/24 2024/25          ## Albania
+# sm.1, 2023/24 2024/25          ## San Marino
