@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+## tip: to test run:
+##   ruby -I ./lib bin/fbup
+##     or
+##   ruby -I fbup/lib fbup/bin/fbup
+
+
+
+require 'fbup'
+
+
+Fbup.main( ARGV )
+
+
+puts "bye"

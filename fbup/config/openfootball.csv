@@ -1,0 +1,117 @@
+key,  path
+
+at,   austria
+
+de,   deutschland
+eng,  england
+es,   espana
+it,   italy
+
+fr,   europe/france
+
+hu, europe/hungary
+gr, europe/greece
+pt, europe/portugal
+
+ch, europe/switzerland
+
+tr, europe/turkey
+
+is,   europe/iceland
+sco,  europe/scotland
+ie,  europe/ireland
+
+fi,  europe/finland
+se,  europe/sweden
+no,  europe/norway
+dk,  europe/denmark
+
+lu,  europe/luxembourg
+be,  europe/belgium
+nl,  europe/netherlands
+cz,  europe/czech-republic
+
+sk,   europe/slovakia
+hr,  europe/croatia
+pl,   europe/poland
+
+ro,  europe/romania
+
+ua,  europe/ukraine
+
+ru,  europe/russia
+
+
+al,  europe/albania
+ad,  europe/andorra
+by,  europe/belarus
+ba,  europe/bosnia-herzegovina   ## use bosnia-n-herzegovina ??
+bg,  europe/bulgaria
+cy,  europe/cyprus
+ee,  europe/estonia
+lv,  europe/latvia
+li,  europe/liechtenstein
+lt,  europe/lithuania
+mk,  europe/north-macedonia
+mt,  europe/malta
+md,  europe/moldova
+me,  europe/montenegro
+
+sm,  europe/san-marino
+rs,  europe/serbia
+si,  europe/slovenia
+
+xk,  europe/kosovo
+kos, europe/kosovo
+
+am,  europe/armenia
+az,  europe/azerbaijan
+ge,  europe/georgia
+fo,  europe/faroe-islands
+gi,  europe/gibraltar
+
+wal, europe/wales
+nir, europe/northern-ireland
+
+
+
+uefa.cl,      champions-league
+uefa.champs,  champions-league
+uefa.el,      champions-league
+uefa.europa,  champions-league
+uefa.conf,    champions-league
+uefa.con,     champions-league
+
+euro,       euro
+
+
+
+mx, mexico
+
+
+ar, south-america/argentina
+br, south-america/brazil
+co, south-america/colombia
+
+copa.l,  south-america/copa-libertadores
+copa.s,  south-america/copa-libertadores
+
+
+eg,         africa/egypt
+ma,         africa/morocco
+dz,         africa/algeria
+afl,        africa/african-football-league
+caf.cl,     africa/champions-league
+caf.champs, africa/champions-league
+
+
+cn,  world/asia/china
+jp,  world/asia/japan
+
+kz,  world/asia/kazakhstan
+
+il,  world/middle-east/israel
+
+
+
+world,   worldcup
