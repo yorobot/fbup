@@ -1,10 +1,12 @@
-league,   seasons
+league, seasons
 
-## top-level countries / leagues
+#######################
+#  top-level countries / leagues
+#    - classic standard base configuration
 
-br.1,   2024
+br.1,    2024
 
-eng.1,  2024/25
+eng.1,   2024/25
 eng.2,   2024/25
 eng.3,   2024/25
 eng.4,   2024/25
@@ -32,7 +34,5 @@ at.2,    2024/25
 at.3.o,  2024/25
 at.cup,  2024/25
 
-
 mx.1,    2024/25
-
 
