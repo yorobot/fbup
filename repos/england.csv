@@ -1,0 +1,8 @@
+league, seasons
+
+## double check no seasons in wwi and wwii
+eng.1,  1888/89..1914/15 1918/19..1940/41 1946/47..2024/25
+eng.2,  1892/93..1914/15 1918/19..1940/41 1946/47..2024/25
+
+## for now starting with premier league; add more later
+eng.3,  1992/93..2024/25
