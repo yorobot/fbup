@@ -8,7 +8,9 @@ fr.1,        2024/25
 it.1,        2024/25
 de.1,        2024/25
 
-nl.1,        2024/25
+# nl.1,        2024/25
+#  - wait for fix?  date for first match is date is 0001-01-01T00:00:00Z
+
 pt.1,        2024/25
 
 uefa.cl,     2024/25

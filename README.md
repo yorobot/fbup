@@ -25,8 +25,16 @@ Optional Step 2.a - Try (test) generate Football.TXT
 
     $ fbgen -f fbdat_clubs.csv
 
+
+
 Step 2 - Generate Football.TXT datafiles and sync / update online
 
     $ fbup -f fbdat_clubs.csv --push
+
+or use the built-in (local) version
+
+    $ ruby -I fbup/lib fbup/bin/fbup -f fbdat_clubs.csv --push
+
+
 
 
