@@ -80,9 +80,9 @@ p args
 
 
 datasets =   if opts[:file]
-                  read_datasets( opts[:file] )
+                  read_leagueset( opts[:file] )
              else
-                  parse_datasets_args( args )
+                  parse_leagueset_args( args )
              end
 
 puts "datasets:"
@@ -108,22 +108,23 @@ puts "  sync:"
 pp sync
 
 
+
 sync.git_fast_forward_if_clean    if opts[:ffwd]
 
 ### step 0 - validate and fill-in seasons etc.
-##   reuse from Fbgen tool
-Fbgen.validate_datasets!( datasets, source_path: source_path )
+datasets.validate!( source_path: source_path )
+
 
 
 datasets.each do |league_key, seasons|
     puts "==> gen #{league_key} - #{seasons.size} seasons(s)..."
 
-    league_info = Writer::LEAGUES[ league_key ]
+    league_info = find_league_info( league_key )
     pp league_info
 
     seasons.each do |season|
       filename = "#{season.to_path}/#{league_key}.csv"
-      path = Fbgen.find_file( filename, path: source_path )
+      path = find_file( filename, path: source_path )
 
       ### get matches
       puts "  ---> reading matches in #{path} ..."
@@ -161,4 +162,4 @@ end
 sync.git_push_if_changes   if opts[:push]
 
 end  # method self.main
-end  # module Fbgen
+end  # module Fbup

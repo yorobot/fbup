@@ -17,7 +17,39 @@ class GitHubSync
 ##                  for repo pathspecs)
 def self.root()  @root || "/sports"; end
 def self.root=( dir ) @root = dir; end
-## use root_dir (alias) - why? why not?
+## use root_dir (or add alias) - why? why not?
+
+
+REPOS = GitHubConfig.new
+recs = read_csv( "#{SportDb::Module::Fbup.root}/config/openfootball.csv" )
+REPOS.add( recs )
+
+## note: datasets of format
+##
+## DATASETS = [
+##   ['it.1',    %w[2020/21 2019/20]],
+##  ['it.2',    %w[2019/20]],
+##  ['es.1',    %w[2019/20]],
+##  ['es.2',    %w[2019/20]],
+## ]
+
+def self.find_repos( datasets )
+repos = []
+datasets.each do |league_key, seasons|
+  repo  = REPOS[ league_key ]
+  ## pp repo
+  if repo.nil?
+     puts "!! ERROR - no repo config/path found for league >#{league_key}<; sorry"
+     exit 1
+  end
+
+  repos <<  "#{repo['owner']}/#{repo['name']}"
+end
+
+pp repos
+repos.uniq   ## note: remove duplicates (e.g. europe or world or such)
+end
+
 
 
 def initialize( repos )
