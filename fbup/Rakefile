@@ -20,8 +20,9 @@ Hoe.spec 'fbup' do
   self.licenses = ['Public Domain']
 
   self.extra_deps = [
-       ['sportdb-writers', '>= 0.4.0'],
-       ['gitti', '>= 0.6.1'],
+       ['gitti',              '>= 0.6.1'],
+       ['sportdb-writers',    '>= 0.4.1'],
+       ['football-timezones', '>= 0.3.0'],
   ]
 
   self.spec_extras = {

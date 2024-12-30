@@ -1,5 +1,6 @@
 
 require 'sportdb/writers'
+require 'football/timezones'   ## pulls-in find_league_info, etc.
 
 
 require 'optparse'    ## command-line processing; check if included updstream?
