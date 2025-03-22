@@ -37,4 +37,32 @@ or use the built-in (local) version
 
 
 
+---
+
+##  World & Co via wfb
+
+
+**World**
+
+Step 1 - Get match data
+
+    $ wfbsync -f world.csv
+
+Step 2 - Generate Football.TXT datafiles and sync / update online
+
+    $ fbup -f world.csv --v2 --flat
+
+or use the local version 
+
+    $ ruby -I fbup/lib fbup/bin/fbup -f world.csv --v2 --flat 
+
+
+Note - use `v2` option for the new match schedule format and
+`flat` for the "flat" naming convetion for file names 
+(the season gets encoded in the basename NOT in a directory)
+e.g. `./2024-25/at1.txt`  => `./2024-25_at1.txt`.
+
+
+
+
 

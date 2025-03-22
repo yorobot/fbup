@@ -1,5 +1,23 @@
 
 module Fbup
+
+LEAGUE_NAMES_V2 = {
+  'jp.1' => 'Japan | J1 League',
+  'cn.1' => 'China | Super League', 
+  'kz.1' => 'Kazakhstan | Premier League', 
+  'eg.1' => 'Egypt | Premiership',
+  'ma.1' => 'Morocco | Botola Pro 1',
+  'dz.1' => 'Algeria | Ligue 1', 
+  'il.1' => 'Israel | Premier League',
+  'au.1' => 'Australia | A-League',  
+############
+## international 
+##    note - will fetch team pages one-by-one too to get country (codes)
+  'afl'    =>  'African Football League',
+  'caf.cl' =>  'CAF Champions League', 
+} 
+
+
 def self.main( args=ARGV )
 
 opts = {
@@ -11,7 +29,10 @@ opts = {
   debug:    true,
   file:     nil,
   test_dir:  './o',
+  v2:       false,   ## v2 Football.TXT generation fromat
+  flat:     false,   ##  use "flat" naming convention for datafile
 }
+
 
 
 parser = OptionParser.new do |parser|
@@ -46,6 +67,18 @@ parser = OptionParser.new do |parser|
                "less debug output/messages - default is (#{!opts[:debug]})" ) do |debug|
       opts[:debug] = false
     end
+
+    parser.on( "--v2",
+               "v2 text format - default is (#{opts[:v2]})" ) do |v2|
+      opts[:v2] = true
+    end
+
+    parser.on( "--flat",
+               "flat names; use season in basen - default is (#{opts[:flat]})" ) do |debug|
+      opts[:flat] = true
+    end
+
+
 
     parser.on( "-I DIR", "--include DIR",
                 "add directory to (source) search path - default is (#{opts[:source_path].join(',')})") do |dir|
@@ -115,7 +148,6 @@ sync.git_fast_forward_if_clean    if opts[:ffwd]
 datasets.validate!( source_path: source_path )
 
 
-
 datasets.each do |league_key, seasons|
     puts "==> gen #{league_key} - #{seasons.size} seasons(s)..."
 
@@ -132,14 +164,26 @@ datasets.each do |league_key, seasons|
       puts "     #{matches.size} matches"
 
       ## build
-      txt = SportDb::TxtMatchWriter.build( matches )
+      txt =  if opts[:v2]
+               SportDb::TxtMatchWriter.build_v2( matches )
+             else 
+               SportDb::TxtMatchWriter.build( matches )
+             end
+
       puts txt   if opts[:debug]
+
 
       league_name  = league_info[ :name ]      # e.g. Brasileiro Série A
       basename     = league_info[ :basename]   #.e.g  1-seriea
 
       league_name =  league_name.call( season )   if league_name.is_a?( Proc )  ## is proc/func - name depends on season
       basename    =  basename.call( season )      if basename.is_a?( Proc )  ## is proc/func - name depends on season
+
+      if opts[:v2]  ## add quick fix for new league name overwrites
+        league_name = LEAGUE_NAMES_V2[league_key] || league_name
+      end
+
+
 
       buf = String.new
       buf << "= #{league_name} #{season}\n\n"
@@ -149,7 +193,19 @@ datasets.each do |league_key, seasons|
       repo_path = "#{repo['owner']}/#{repo['name']}"
       repo_path << "/#{repo['path']}"    if repo['path']  ## note: do NOT forget to add optional extra path!!!
 
-      outpath = "#{root_dir}/#{repo_path}/#{season.to_path}/#{basename}.txt"
+
+      outpath = "#{root_dir}/#{repo_path}"
+
+      outpath +=  if opts[:flat]   ## add season "inline" (to basename) or use dir
+                     ## change base name to league key
+                     ##   todo - fix - make gsub smarter
+                     ##    change at.cup to at_cup - why? why not?
+                     basename = league_key.gsub( '.', '' )
+                     "/#{season.to_path}_#{basename}.txt"
+                  else
+                     "/#{season.to_path}/#{basename}.txt"
+                  end
+
 
       if opts[:dry]
         puts "   (dry) writing to >#{outpath}<..."

@@ -1,0 +1,34 @@
+league, seasons
+
+#######
+#  south america
+
+br.1,    2024
+br.2,    2024
+
+ar.1,    2024
+co.1,    2024   ## Colombia
+
+copa.l,  2024
+
+
+###########
+#  africa
+
+eg.1,   2023/24   ## Egypt
+ma.1,   2024/25   ## Morocco
+dz.1,   2024/25   ## Algeria
+
+caf.cl,   2024/25
+afl,      2023
+
+
+######
+#   asia
+
+
+###  - todo - check if season is calendar year or academic?
+##              add (south) korea - ??
+cn.1,  2024    ## China
+jp.1,  2024    ## Japan
+

@@ -97,12 +97,17 @@ copa.l,  south-america/copa-libertadores
 copa.s,  south-america/copa-libertadores
 
 
-eg,         africa/egypt
-ma,         africa/morocco
-dz,         africa/algeria
-afl,        africa/african-football-league
-caf.cl,     africa/champions-league
-caf.champs, africa/champions-league
+
+###
+# world repo
+
+eg,         world/africa/egypt
+ma,         world/africa/morocco
+dz,         world/africa/algeria
+
+afl,        world/africa/african-football-league
+caf.cl,     world/africa/champions-league
+caf.champs, world/africa/champions-league
 
 
 cn,  world/asia/china
@@ -112,6 +117,9 @@ kz,  world/asia/kazakhstan
 
 il,  world/middle-east/israel
 
+
+mls,  world/north-america/major-league-soccer
+au,   world/pacific/australia
 
 
 world,   worldcup
