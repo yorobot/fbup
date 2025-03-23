@@ -48,6 +48,11 @@ Step 1 - Get match data
 
     $ wfbsync -f world.csv
 
+or use the local version
+
+    $ ruby -I ../worldfootball/wfb/lib ../worldfootball/wfb/bin/wfbsync -f world.csv
+
+
 Step 2 - Generate Football.TXT datafiles and sync / update online
 
     $ fbup -f world.csv --v2 --flat

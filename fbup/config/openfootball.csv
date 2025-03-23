@@ -86,7 +86,6 @@ euro,       euro
 
 
 
-mx, mexico
 
 
 ar, south-america/argentina
@@ -119,6 +118,13 @@ il,  world/middle-east/israel
 
 
 mls,  world/north-america/major-league-soccer
+
+
+mx,                world/north-america/mexico
+##  todo/check - why mx config is not enough?
+## mx.2.expansion,    world/north-america/mexico
+
+
 au,   world/pacific/australia
 
 

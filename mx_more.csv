@@ -1,4 +1,8 @@
 league, seasons
 
-mx.1,   2018/19..2023/24
-mx.2,   2020/21..2023/24
+mx.1,             2010/11..2024/25
+
+## first expansion season ->  2020/21 Apertura
+## last ascenso season    ->  2019/20 Clausura
+mx.2.ascenso,     2010/11..2019/20
+mx.2.expansion,   2020/21..2024/25
