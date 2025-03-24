@@ -10,7 +10,8 @@ require 'fifa'
 ## !!! exclude france, netherlands & portugal for now!!!
 
 
-rootdir = '/sports/openfootball/europe'
+# rootdir = '/sports/openfootball/europe'
+rootdir = '/sports/openfootball/south-america'
 
 
 paths = Dir.glob( "#{rootdir}/**/*.txt" )
@@ -45,31 +46,38 @@ paths.each do |path|
 
   ## get country code for country
   cty = Fifa.world.find_by_name( country )
+ 
+=begin
   if cty.nil?
     puts "!! ERROR - no country found for #{country}"
     exit 1
   end
 
-=begin
   next if ['france',
            'portugal',
            'netherlands'].include?( country )
 =end
 
-  puts "#{cty.key} => #{country}"
+  name = nil
 
-  name = "#{season}_#{cty.key}"
-  if base.start_with?('1')
-     name += '1'
-  elsif base.start_with?( '2')
-     name += '2'
-  elsif base.start_with?( 'cup')
-     name += 'cup'
-  else
-     raise ArgumentError, "unexpected basename #{base}"
+  if cty
+    puts "#{cty.key} => #{country}"
+
+    name = "#{season}_#{cty.key}"
+    if base.start_with?('1')
+      name += '1'
+    elsif base.start_with?( '2')
+      name += '2'
+    elsif base.start_with?( 'cup')
+      name += 'cup'
+    else
+      raise ArgumentError, "unexpected basename #{base}"
+    end
+    name += ".txt"
+  else   ## assume internation cup etc.
+    name = "#{season}_#{base}"
   end
 
-  name += ".txt"
   puts "  >> #{name} <<"
 
   oldpath = path

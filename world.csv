@@ -8,6 +8,22 @@ mx.1,             2010/11..2024/25
 mx.2.ascenso,     2010/11..2019/20
 mx.2.expansion,   2020/21..2024/25
 
+###
+#  note CONCACAF Champions League now known as Champions Cup !!!
+#
+# Known as CONCACAF Champions' Cup (1962-2007) and 
+#          CONCACAF Champions League (2008-2023)
+#
+#  change key to concacaf.1 or such - why? why not?
+#
+# 2010-11 2011-12 2012-13 2013-14 2014-15 2015-16 2016-17
+# 2018 2019 2020 2021 2022 2023 2024 2025
+#
+#  see https://en.wikipedia.org/wiki/Template:CONCACAF_Champions_Cup
+
+concacaf.cl,  2010/11 2011/12 2012/13 2013/14 2014/15 2015/16 2016/17 2018 2019 2020 2021 2022 2023 2024 2025
+
+
 
 au.1, 2018/19 2019/20 2020/21 2021/22 2022/23 2023/24 2024/25
 

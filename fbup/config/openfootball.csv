@@ -125,6 +125,12 @@ mx,                world/north-america/mexico
 ## mx.2.expansion,    world/north-america/mexico
 
 
+## fix/change concacaf.cl to concacaf.champs !!!
+concacaf.cl,     world/north-america/champions-league
+concacaf.champs, world/north-america/champions-league
+
+
+
 au,   world/pacific/australia
 
 

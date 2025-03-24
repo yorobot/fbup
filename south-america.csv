@@ -1,5 +1,8 @@
 league, seasons
 
+#######
+#  south america
+
 br.1,    2018 2019 2020 2021 2022 2023 2024 2025
 br.2,    2018 2019 2020 2021 2022 2023 2024 2025
 
@@ -8,14 +11,18 @@ br.2,    2018 2019 2020 2021 2022 2023 2024 2025
 ##
 ##  check - wikipedia has/lists no 2020 season!!!
 
-## ar.1,    2018/19 2019/20 2020 2021 2022 2023 2024 2025
-
+ar.1,    2018/19 2019/20 2020 2021 2022 2023 2024 2025
 
 ###  season - use calendar year 
 ###   see https://en.wikipedia.org/wiki/Template:Colombian_Primera_A
 
-## co.1,   2023 2024 2025
+co.1,    2023 2024 2025  ## Colombia
 
-##  note - will fetch team pages one-by-one for country (codes)
-## copa.l,                 2021 2022 2023 2024
+## 2012..2025
+copa.l,    2012 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025
+
+
+
+
+
 
