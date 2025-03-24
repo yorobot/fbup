@@ -68,8 +68,8 @@ internationals / national teams
 
 ## more variants in new "v2" format
 
-- [x] /worldcup.more   - World Cup with line-ups, and more 
-- [x] /world.more      -  more leagues from around the world
+- [ ] /worldcup.more   - World Cup with line-ups, and more 
+- [ ] /world.more      -  more leagues from around the world
 
 more repos
 
