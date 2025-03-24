@@ -1,11 +1,20 @@
 # Notes on (/openfootball Repo) Updates
 
-```
-- [ ]  add v2, flat options to openfootball config for fbup !!!!!!!
-       use flags/opts or a column for every option?
-          e.g. v2 | flat
 
-- [ ]  update champions-league (add champs, europa, conf)          
+```
+- [x]  add v2, flat options to openfootball config for fbup !!!!!!!
+        use flags/opts or a column for every option?
+           e.g. v2 | flat
+
+- [ ]  update champions-league (add champs, europa, conf)   
+
+- [ ]  add wfb upstream - more group mappings e.g
+       - Gruppe G / Group G
+       - Gruppe H / Group H, I, J, K, L  !!!
+       - Gruppe 1 / Group 1
+       - Gruppe 2 / Group 2 etc.      
+       - Sechzehntelfinale   -> Round of 32
+       
 ```
 
 

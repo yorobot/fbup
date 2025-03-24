@@ -29,8 +29,11 @@ opts = {
   debug:    true,
   file:     nil,
   test_dir:  './o',
-  v2:       false,   ## v2 Football.TXT generation fromat
-  flat:     false,   ##  use "flat" naming convention for datafile
+
+  v1:       false,
+  classic:  false,
+  ## v2:       false,   ## v2 Football.TXT generation fromat
+  ## flat:     false,   ##  use "flat" naming convention for datafile
 }
 
 
@@ -68,14 +71,14 @@ parser = OptionParser.new do |parser|
       opts[:debug] = false
     end
 
-    parser.on( "--v2",
-               "v2 text format - default is (#{opts[:v2]})" ) do |v2|
-      opts[:v2] = true
+    parser.on( "--v1",
+               "v1 text format - default is (#{opts[:v1]})" ) do |v1|
+      opts[:v1] = true
     end
 
-    parser.on( "--flat",
-               "flat names; use season in basen - default is (#{opts[:flat]})" ) do |debug|
-      opts[:flat] = true
+    parser.on( "--classic",
+               "classic names; use season in directory NOT basename - default is (#{opts[:classic]})" ) do |classic|
+      opts[:classic] = true
     end
 
 
@@ -163,11 +166,19 @@ datasets.each do |league_key, seasons|
       matches = SportDb::CsvMatchParser.read( path )
       puts "     #{matches.size} matches"
 
+
+      ## get repo config for flags and more
+      repo  = GitHubSync::REPOS[ league_key ]
+      flags = repo['flags'] || {}
+      classic_flag = flags['classic'] || false
+
+
       ## build
-      txt =  if opts[:v2]
-               SportDb::TxtMatchWriter.build_v2( matches )
-             else 
+      txt =  if opts[:v1]
+               ## todo - change upstream build to build_v1
                SportDb::TxtMatchWriter.build( matches )
+             else 
+               SportDb::TxtMatchWriter.build_v2( matches )
              end
 
       puts txt   if opts[:debug]
@@ -179,8 +190,12 @@ datasets.each do |league_key, seasons|
       league_name =  league_name.call( season )   if league_name.is_a?( Proc )  ## is proc/func - name depends on season
       basename    =  basename.call( season )      if basename.is_a?( Proc )  ## is proc/func - name depends on season
 
-      if opts[:v2]  ## add quick fix for new league name overwrites
-        league_name = LEAGUE_NAMES_V2[league_key] || league_name
+
+      if classic_flag || opts[:classic]
+         ## do nothing 
+      else 
+         ## add quick fix for new league name overwrites
+         league_name = LEAGUE_NAMES_V2[league_key] || league_name
       end
 
 
@@ -188,22 +203,23 @@ datasets.each do |league_key, seasons|
       buf = String.new
       buf << "= #{league_name} #{season}\n\n"
       buf << txt
-
-      repo  = GitHubSync::REPOS[ league_key ]
+    
       repo_path = "#{repo['owner']}/#{repo['name']}"
       repo_path << "/#{repo['path']}"    if repo['path']  ## note: do NOT forget to add optional extra path!!!
 
-
+    
       outpath = "#{root_dir}/#{repo_path}"
 
-      outpath +=  if opts[:flat]   ## add season "inline" (to basename) or use dir
+
+      outpath +=  if classic_flag || opts[:classic]
+                     "/#{season.to_path}/#{basename}.txt"
+                  else
+                     ## add season "inline" (to basename) or use dir
                      ## change base name to league key
                      ##   todo - fix - make gsub smarter
                      ##    change at.cup to at_cup - why? why not?
                      basename = league_key.gsub( '.', '' )
                      "/#{season.to_path}_#{basename}.txt"
-                  else
-                     "/#{season.to_path}/#{basename}.txt"
                   end
 
 

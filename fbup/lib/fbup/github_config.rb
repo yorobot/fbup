@@ -55,7 +55,16 @@ def add( recs )
                               'name'  => name,  ## (required)
                               'path'  => path   ## extra/inner/inside/local path (optional)
                             }
+
+    ## check for/add flags
+      flags = rec['flags'].split( /[ ]*[|][ ]*/ )
+      ## generte hash
+      ##    e.g.   v2 | flat   => { 'v2' => true, 'flat' => true } etc.
+      flags = flags.map { |flag| [flag, true] }.to_h   
+      @table[ rec['key'] ]['flags'] = flags      if flags.size > 0
   end
+
+  
 end
 
 

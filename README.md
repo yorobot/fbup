@@ -55,11 +55,11 @@ or use the local version
 
 Step 2 - Generate Football.TXT datafiles and sync / update online
 
-    $ fbup -f world.csv --v2 --flat
+    $ fbup -f world.csv 
 
 or use the local version 
 
-    $ ruby -I fbup/lib fbup/bin/fbup -f world.csv --v2 --flat 
+    $ ruby -I fbup/lib fbup/bin/fbup -f world.csv 
 
 
 Note - use `v2` option for the new match schedule format and
