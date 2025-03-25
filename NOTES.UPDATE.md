@@ -1,7 +1,12 @@
 # Notes on (/openfootball Repo) Updates
 
 
+
 ```
+- [ ]  update parser - add new MatchHeader !!!
+
+- [ ]  move teams list to attic - why? why not?
+
 - [x]  add v2, flat options to openfootball config for fbup !!!!!!!
         use flags/opts or a column for every option?
            e.g. v2 | flat
@@ -15,7 +20,14 @@
        - Gruppe 2 / Group 2 etc.      
        - Sechzehntelfinale   -> Round of 32
        
+- [ ]  add archive flag and try on /england  - why? why not?
+          - archive - before season 2000 use archive/1990s, 1980s, etc.
+
+
+- [ ]  move update NOTES in repos over here (in one place) - why? why not?
+        e.g.  use NOTES.ENG.md and such                 
 ```
+
 
 
 
@@ -32,15 +44,15 @@
 
 top four country-specific (plus austria)
 
-- [ ]  /england
-- [ ]  /espana
-- [ ]  /deutschland
-- [ ]  /italy
-- [ ]  /austria
+- [x]  /england
+- [x]  /espana
+- [x]  /deutschland
+- [x]  /italy
+- [x]  /austria
 
 internationals / clubs
 
-- [ ] /champions-league   - UEFA champions league, etc.
+- [x] /champions-league   - UEFA champions league, etc.
 
 
 !!! update later  - keep separate - to sync with wikipedia later - why? why not?

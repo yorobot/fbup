@@ -14,12 +14,7 @@ key,  path,  flags
 
 at,   austria,           classic
 
-de,     deutschland,       classic
-### check - why de.4.n  is not matched by de ??
-## de.4.n, deutschland,       classic
-
-
-
+de,     deutschland,     classic
 eng,  england,           classic
 es,   espana,            classic 
 it,   italy,             classic
@@ -119,7 +114,7 @@ copa.s,  south-america/copa-libertadores,
 
 
 ###
-# world repo
+# /world repo
 
 eg,         world/africa/egypt,
 ma,         world/africa/morocco,
@@ -142,8 +137,6 @@ mls,  world/north-america/major-league-soccer,
 
 
 mx,                world/north-america/mexico,
-##  todo/check - why mx config is not enough?
-## mx.2.expansion,    world/north-america/mexico
 
 
 ## fix/change concacaf.cl to concacaf.champs !!!

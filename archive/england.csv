@@ -1,0 +1,17 @@
+league, seasons
+
+## double check no seasons in wwi and wwii
+
+##
+##  !! ERROR - no season 1918/19 found for eng.1
+##  !! ERROR - no season 1939/40 found for eng.1
+##  !! ERROR - no season 1918/19 found for eng.2
+##  !! ERROR - no season 1940/41 found for eng.2
+##       check if (reported) seasons exist?
+
+eng.1,  1888/89..1914/15 1919/20..1938/39 1946/47..2024/25
+eng.2,  1892/93..1914/15 1919/20..1939/40 1946/47..2024/25
+
+## for now starting with premier league season; add more seasons later
+###   note -  for now first season available is 1999/00
+eng.3,  1999/2000..2024/25
