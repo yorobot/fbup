@@ -14,7 +14,12 @@ key,  path,  flags
 
 at,   austria,           classic
 
-de,   deutschland,       classic
+de,     deutschland,       classic
+### check - why de.4.n  is not matched by de ??
+## de.4.n, deutschland,       classic
+
+
+
 eng,  england,           classic
 es,   espana,            classic 
 it,   italy,             classic

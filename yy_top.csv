@@ -1,0 +1,32 @@
+league, seasons
+
+### all-in-one for all top four repos plus austria
+
+### /england    -- see eng.csv
+eng.1,  2024/25
+eng.2,  2024/25
+eng.3,  2024/25
+eng.4,  2024/25
+eng.5,  2024/25
+
+### /deutschland   -- see de.csv
+de.1,        2024/25
+de.2,        2024/25
+de.3,        2024/25
+de.cup,      2024/25
+
+de.4.n,      2024/25
+de.4.no,     2024/25
+de.4.w,      2024/25
+de.4.sw,     2024/25
+de.4.bayern, 2024/25
+
+### /austria       -- see at.csv
+at.1,    2024/25
+at.2,    2024/25
+at.3.o,  2024/25
+at.3.m,  2024/25
+at.cup,  2024/25
+
+
+## add more here!!!
