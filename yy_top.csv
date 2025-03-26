@@ -9,7 +9,8 @@ eng.3,  2024/25
 eng.4,  2024/25
 eng.5,  2024/25
 
-## todo/fix - add cups - facup and ???
+eng.fa.cup,   2024/25       ## FA Cup  (FA Challenge Cup)
+eng.efl.cup,  2024/25       ## EFL Cup (League Cup - sponsor name is Carabao Cup)
 
 
 ### /espana    -- see es.csv
