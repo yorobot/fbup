@@ -147,5 +147,7 @@ concacaf.champs, world/north-america/champions-league,
 
 au,   world/pacific/australia,
 
+world.clubs,  club-worldcup,   classic     ## use classic setup for now - why? why not?
 
 world,   worldcup,      ## add custom  flag - why? why not?
+
