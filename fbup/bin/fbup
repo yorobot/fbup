@@ -7,7 +7,7 @@
 
 
 ## note - quick hack - auto-add local football timezones
-$LOAD_PATH.unshift( '/sports/sportdb/sport.db/timezones/lib' )
+$LOAD_PATH.unshift( '/sports/sportdb/sport.db/leagues/lib' )
 $LOAD_PATH.unshift( '/sports/sportdb/sport.db/fifa/lib' )
 require 'fbup'
 

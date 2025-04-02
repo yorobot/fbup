@@ -115,17 +115,27 @@ puts "ARGV:"
 p args
 
 
+
+source_path = opts[:source_path]
+
+### get latest season with autofiller
+##     todo use new LeaguesetAutofiller class - why? why not?
+##    or move code of autofiller here - why? why not?
+##
+autofiller = ->(league_query) {           
+  Leagueset.autofiller( league_query, source_path: source_path )
+} 
+
 datasets =   if opts[:file]
-                  read_leagueset( opts[:file] )
+                  read_leagueset( opts[:file], autofill: autofiller )
              else
-                  parse_leagueset_args( args )
+                  parse_leagueset_args( args, autofill: autofiller )
              end
 
 puts "datasets:"
 pp datasets
 
 
-source_path = opts[:source_path]
 
 root_dir =  if opts[:test]
                opts[:test_dir]
@@ -147,18 +157,34 @@ pp sync
 
 sync.git_fast_forward_if_clean    if opts[:ffwd]
 
+
 ### step 0 - validate and fill-in seasons etc.
 datasets.validate!( source_path: source_path )
 
 
-datasets.each do |league_key, seasons|
-    puts "==> gen #{league_key} - #{seasons.size} seasons(s)..."
+##
+## note - use league_query (or league_qkey or _querykey) or such
+##                for user supplied key to compute/find the canoncial league code
 
-    league_info = find_league_info( league_key )
-    pp league_info
+datasets.each do |league_query, seasons|
+    puts "==> gen #{league_query} - #{seasons.size} seasons(s)..."
+
 
     seasons.each do |season|
-      filename = "#{season.to_path}/#{league_key}.csv"
+      ## note - league info requires season 
+      ##          PLUS use (canoncial) league code from info!!!
+      league_info = LeagueCodes.find_by( code: league_query, season: season )
+      pp league_info
+
+      league_code  = league_info[ 'code' ]
+      league_name  = league_info[ 'name' ]       # e.g. Brasileiro Série A
+
+      ### todo/fix - move basename out of league_info
+      ###               make it github/openfootball "legacy" code
+      basename     = league_info[ 'basename' ]   #.e.g  1-seriea
+  
+    
+      filename = "#{season.to_path}/#{league_code}.csv"
       path = find_file( filename, path: source_path )
 
       ### get matches
@@ -168,7 +194,7 @@ datasets.each do |league_key, seasons|
 
 
       ## get repo config for flags and more
-      repo  = GitHubSync::REPOS[ league_key ]
+      repo  = GitHubSync::REPOS[ league_code ]
       flags = repo['flags'] || {}
       classic_flag = flags['classic'] || false
 
@@ -184,18 +210,13 @@ datasets.each do |league_key, seasons|
       puts txt   if opts[:debug]
 
 
-      league_name  = league_info[ :name ]      # e.g. Brasileiro Série A
-      basename     = league_info[ :basename]   #.e.g  1-seriea
-
-      league_name =  league_name.call( season )   if league_name.is_a?( Proc )  ## is proc/func - name depends on season
-      basename    =  basename.call( season )      if basename.is_a?( Proc )  ## is proc/func - name depends on season
-
+   
 
       if classic_flag || opts[:classic]
          ## do nothing 
       else 
          ## add quick fix for new league name overwrites
-         league_name = LEAGUE_NAMES_V2[league_key] || league_name
+         league_name = LEAGUE_NAMES_V2[league_code] || league_name
       end
 
 
@@ -218,7 +239,7 @@ datasets.each do |league_key, seasons|
                      ## change base name to league key
                      ##   todo - fix - make gsub smarter
                      ##    change at.cup to at_cup - why? why not?
-                     basename = league_key.gsub( '.', '' )
+                     basename = league_code.gsub( '.', '' )
                      "/#{season.to_path}_#{basename}.txt"
                   end
 
