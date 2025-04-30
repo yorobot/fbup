@@ -1,0 +1,96 @@
+code,basename,start_season,end_season
+
+########
+### use a "custom" basename for "classic" leagues
+
+####
+##  at - Austria
+at.1,1-bundesliga,,
+## -- add new name - Erste Liga  => 2. Liga 
+at.2,2-liga2,2018/19,
+at.2,2-liga1,,2017/18
+at.3.o,3-regionalliga-ost,,
+at.3.m,3-regionalliga-mitte,,
+at.3.w,3-regionalliga-west,,
+at.3.sbg,3-regionalliga-salzburg,,
+at.3.t,3-regionalliga-tirol,,
+at.3.v,3-regionalliga-vorarlberg,,
+at.cup,cup,,
+
+####
+##  de - Deutschland
+de.1,1-bundesliga,,
+de.2,2-bundesliga2,,
+de.3,3-liga3,,
+de.cup,cup,,
+de.super,super,,
+de.4.nord,4-regionalliga-nord,,
+de.4.nordost,4-regionalliga-nordost,,
+de.4.west,4-regionalliga-west,,
+de.4.suedwest,4-regionalliga-suedwest,,
+de.4.bayern,4-regionalliga-bayern,,
+# -- add alternate keys for de.4
+#   todo/fix - find a way to add alternate keys (WITHOUT repeating basename) !!!
+de.4.n,4-regionalliga-nord,,
+de.4.no,4-regionalliga-nordost,,
+de.4.w,4-regionalliga-west,,
+de.4.sw,4-regionalliga-suedwest,,
+
+################
+##  eng - England
+eng.2,2-championship,2004/05,
+eng.3,3-league1,2004/05,
+eng.4,4-league2,2004/05,
+
+eng.1,1-premierleague,1992/93,
+eng.2,2-division1,1992/93,2003/04
+eng.3,3-division2,1992/93,2003/04
+eng.4,4-division3,1992/93,2003/04
+eng.5,5-nationalleague,1992/93,
+
+eng.1,1-division1,1892/93,1991/92
+eng.2,2-division2,1892/93,1991/92
+eng.3,3-division3,,1991/92
+eng.3.a,3-division3-north,,
+eng.3.b,3-division3-south,,
+eng.1,1-footballleague,1888/89,1891/92
+
+
+###
+##  fix - always use fa.cup and efl.cup - why? why not?
+eng.cup,facup,,     ## FA CuP
+eng.super,super,,    ## FA Community Shield
+eng.cup.l,eflcup,,   ## EFL Cup
+eng.cup.t,efltrophy,,  ## EFL Trophy
+eng.cup.t.ii,fatrophy,,  ## FA Trophy
+
+## -- add alternate codes / keys
+eng.fa.cup,facup,,    ## FA Cup
+eng.efl.cup,eflcup,,  ## EFL Cup
+
+
+#######
+## es - Espana
+es.1,1-liga,,
+es.2,2-liga2,,
+es.3,3-liga2b,,    ## Segunda División B
+es.cup,cup,,
+es.super,supercopa,,     
+
+
+#####
+## it - Italy  
+it.1,1-seriea,,
+it.2,2-serieb,,
+it.3.a,3-seriec_a,,  ## North & Central West
+it.3.b,3-seriec_b,,  ## North & Central East
+it.3.c,3-seriec_c,,  ## South
+it.cup,cup,,
+it.super,super,,
+## it.cup.c    -- Italian Coppa Italia Serie C
+
+
+
+
+
+

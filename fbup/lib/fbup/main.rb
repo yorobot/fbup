@@ -159,6 +159,9 @@ sync.git_fast_forward_if_clean    if opts[:ffwd]
 
 
 ### step 0 - validate and fill-in seasons etc.
+##
+##  todo/fix - remove fill-in seasons from validate!!
+##                 use new autofill on init!!!
 datasets.validate!( source_path: source_path )
 
 
