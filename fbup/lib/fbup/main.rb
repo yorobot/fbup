@@ -184,7 +184,7 @@ datasets.each do |league_query, seasons|
 
       ### todo/fix - move basename out of league_info
       ###               make it github/openfootball "legacy" code
-      basename     = league_info[ 'basename' ]   #.e.g  1-seriea
+      ## basename     = league_info[ 'basename' ]   #.e.g  1-seriea
   
     
       filename = "#{season.to_path}/#{league_code}.csv"
@@ -214,11 +214,20 @@ datasets.each do |league_query, seasons|
 
 
    
-
+      basename = nil
       if classic_flag || opts[:classic]
-         ## do nothing 
+         league_config = LeagueConfig.find_by( code: league_query, season: season )
+         if league_config.nil?
+            puts "!! ERROR - basename league config required for classic format; no config found for #{league_query} #{season}; sorry"
+            exit 1
+         end
+         basename  = league_config['basename']        
       else 
-         ## add quick fix for new league name overwrites
+         ## change base name to league key
+         ##   todo - fix - make gsub smarter
+         ##    change at.cup to at_cup - why? why not?
+         basename = league_code.gsub( '.', '' )
+         ## bonus - add quick fix for new league name overwrites
          league_name = LEAGUE_NAMES_V2[league_code] || league_name
       end
 
@@ -238,11 +247,7 @@ datasets.each do |league_query, seasons|
       outpath +=  if classic_flag || opts[:classic]
                      "/#{season.to_path}/#{basename}.txt"
                   else
-                     ## add season "inline" (to basename) or use dir
-                     ## change base name to league key
-                     ##   todo - fix - make gsub smarter
-                     ##    change at.cup to at_cup - why? why not?
-                     basename = league_code.gsub( '.', '' )
+                     ## note - add season "inline" (to basename) or use dir
                      "/#{season.to_path}_#{basename}.txt"
                   end
 

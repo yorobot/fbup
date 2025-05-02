@@ -14,7 +14,7 @@ key,  path,  flags
 
 at,   austria,           classic
 
-de,     deutschland,     classic
+de,   deutschland,       classic
 eng,  england,           classic
 es,   espana,            classic 
 it,   italy,             classic
@@ -137,7 +137,7 @@ sa,  world/middle-east/saudi-arabia,
 mls,  world/north-america/major-league-soccer,
 
 
-mx,                world/north-america/mexico,
+mx,   world/north-america/mexico,
 
 
 ## fix/change concacaf.cl to concacaf.champs !!!

@@ -3,8 +3,9 @@ code,basename,start_season,end_season
 ########
 ### use a "custom" basename for "classic" leagues
 
+
 ####
-##  at - Austria
+##  /austria
 at.1,1-bundesliga,,
 ## -- add new name - Erste Liga  => 2. Liga 
 at.2,2-liga2,2018/19,
@@ -18,7 +19,7 @@ at.3.v,3-regionalliga-vorarlberg,,
 at.cup,cup,,
 
 ####
-##  de - Deutschland
+##  /deutschland
 de.1,1-bundesliga,,
 de.2,2-bundesliga2,,
 de.3,3-liga3,,
@@ -37,7 +38,7 @@ de.4.w,4-regionalliga-west,,
 de.4.sw,4-regionalliga-suedwest,,
 
 ################
-##  eng - England
+##  /england
 eng.2,2-championship,2004/05,
 eng.3,3-league1,2004/05,
 eng.4,4-league2,2004/05,
@@ -70,16 +71,16 @@ eng.efl.cup,eflcup,,  ## EFL Cup
 
 
 #######
-## es - Espana
+## /espana
 es.1,1-liga,,
 es.2,2-liga2,,
 es.3,3-liga2b,,    ## Segunda División B
 es.cup,cup,,
-es.super,supercopa,,     
+es.super,supercopa,,        ## check - use only super - why? why not?
 
 
 #####
-## it - Italy  
+## /italy  
 it.1,1-seriea,,
 it.2,2-serieb,,
 it.3.a,3-seriec_a,,  ## North & Central West
@@ -87,9 +88,23 @@ it.3.b,3-seriec_b,,  ## North & Central East
 it.3.c,3-seriec_c,,  ## South
 it.cup,cup,,
 it.super,super,,
-## it.cup.c    -- Italian Coppa Italia Serie C
+## it.cup.c    -- Italian Coppa Italia Serie C  
 
 
+#####
+##  /champions-league    - uefa incl. europa & conference
+uefa.cl,      cl,,
+uefa.champs,  cl,,
+uefa.el,      el,,
+uefa.europa,  el,,
+uefa.conf,    conf,,
+uefa.con,     conf,,
+
+#####
+##  /club-worldcup
+world.clubs,  clubworldcup,,
+world.club,   clubworldcup,,     
+##  - use world.clubs or club ??
 
 
 

@@ -18,6 +18,7 @@ require_relative 'fbup/version'
 require_relative 'fbup/github_config'
 require_relative 'fbup/github'   ## github helpers/update machinery
 
+require_relative 'fbup/league_config'   ## for "classic" custom basenames e.g. eng.1 => 1-premierleague etc.
 
 require_relative 'fbup/main'
 

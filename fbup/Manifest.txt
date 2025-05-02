@@ -3,9 +3,11 @@ Manifest.txt
 README.md
 Rakefile
 bin/fbup
+config/leagues.csv
 config/openfootball.csv
 lib/fbup.rb
 lib/fbup/github.rb
 lib/fbup/github_config.rb
+lib/fbup/league_config.rb
 lib/fbup/main.rb
 lib/fbup/version.rb

@@ -21,8 +21,8 @@ Hoe.spec 'fbup' do
 
   self.extra_deps = [
        ['gitti',              '>= 0.6.1'],
-       ['sportdb-writers',    '>= 0.4.1'],
-       ['leagues',            '>= 0.1.1'],
+       ['sportdb-writers',    '>= 0.4.3'],
+       ['leagues',            '>= 0.2.1'],
   ]
 
   self.spec_extras = {
