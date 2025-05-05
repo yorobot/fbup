@@ -107,6 +107,8 @@ euro,       euro,   ## add custom flag - why? why not?
 ar, south-america/argentina,
 br, south-america/brazil,
 co, south-america/colombia,
+py, south-america/paraguay,
+ec, south-america/ecuador,
 
 copa.l,  south-america/copa-libertadores,
 copa.s,  south-america/copa-libertadores,
@@ -119,6 +121,7 @@ copa.s,  south-america/copa-libertadores,
 eg,         world/africa/egypt,
 ma,         world/africa/morocco,
 dz,         world/africa/algeria,
+za,         world/africa/south-africa,
 
 afl,        world/africa/african-football-league,
 caf.cl,     world/africa/champions-league,
@@ -138,6 +141,9 @@ mls,  world/north-america/major-league-soccer,
 
 
 mx,   world/north-america/mexico,
+
+
+cr,   world/central-america/costa-rica,
 
 
 ## fix/change concacaf.cl to concacaf.champs !!!
