@@ -100,6 +100,14 @@ uefa.europa,  el,,
 uefa.conf,    conf,,
 uefa.con,     conf,,
 
+uefa.cl.q,          clq,,
+uefa.cl.quali,      clq,,
+uefa.el.q,          elq,,
+uefa.el.quali,      elq,,
+uefa.conf.q,        confq,,
+uefa.conf.quali,    confq,,
+
+
 #####
 ##  /club-worldcup
 world.clubs,  clubworldcup,,

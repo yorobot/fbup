@@ -28,6 +28,14 @@ uefa.europa,  champions-league,    classic
 uefa.conf,    champions-league,    classic
 uefa.con,     champions-league,    classic
 
+uefa.cl.q,          champions-league,    classic
+uefa.cl.quali,      champions-league,    classic
+uefa.el.q,          champions-league,    classic
+uefa.el.quali,      champions-league,    classic
+uefa.conf.q,        champions-league,    classic
+uefa.conf.quali,    champions-league,    classic
+
+
 
 fr,   europe/france, 
 
