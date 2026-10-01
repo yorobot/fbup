@@ -8,7 +8,7 @@
 ##    $ ruby sandbox/test_uefa.rb
 
 $LOAD_PATH.unshift( './lib' )
-require 'fbup'
+require 'openfootball'
 
 
 
@@ -25,13 +25,13 @@ season = '2024/25'
 uefa.each do |country|
    key = country.key
    ## use cup for liechtenstein (li)
-   league_code =  if key == 'li' 
-                       "#{key}.cup" 
-                  else 
+   league_code =  if key == 'li'
+                       "#{key}.cup"
+                  else
                        "#{key}.1"
                   end
 
-   league_info = find_league_info( league_code )
+   league_info = SportDb::LeagueCodes.find_by( code: league_code, season: season )
 
    if league_info.nil?
       puts "!! #{country.key} #{country.name} - no league info found"
@@ -49,6 +49,9 @@ end
 
 
 puts "bye"
+
+
+
 
 __END__
 
@@ -107,4 +110,3 @@ OK wal Wales
 OK sco Scotland
 OK nir Northern Ireland
 OK il Israel
-

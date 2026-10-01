@@ -3,8 +3,8 @@ module Fbup
 ####
 ### check - rename to ExtraLeagueConfig or such - why? why not?
 
-class LeagueConfig 
-    
+class LeagueConfig
+
 def self.find_by( code:, season: )
     ## return league code record/item or nil
     builtin.find_by( code: code, season: season )
@@ -19,7 +19,7 @@ def self.builtin
         leagues = LeagueConfig.new
         ['leagues',
         ].each do |name|
-           recs = read_csv( "#{SportDb::Module::Fbup.root}/config/#{name}.csv" )
+           recs = read_csv( "#{Openfootball.root}/config/#{name}.csv" )
            leagues.add( recs )
         end
         leagues
@@ -33,7 +33,7 @@ def self.norm( code )      ## use norm_(league)code - why? why not?
   ##   downcase
   ##   and remove all non-letters/digits e.g. at.1 => at1, at 1 => at1 etc.
   ##                                            ö.1 => ö1
-  ##   note - allow unicode letters!!! 
+  ##   note - allow unicode letters!!!
   ##    note - assume downcase works for unicode too e.g. Ö=>ö
   ##           for now no need to use our own downcase - why? why not?
 
@@ -45,12 +45,12 @@ end
 
 def initialize
     @leagues = {}
-end    
+end
 
 
 def add( recs )
   recs.each do |rec|
-    key = LeagueConfig.norm( rec['code'] )
+    key = self.class.norm( rec['code'] )
     @leagues[ key ] ||= []
 
     ## note: auto-change seasons to season object or nil
@@ -64,21 +64,19 @@ end
 
 
 def find_by( code:, season: )
-  raise ArgumentError, "league code as string|symbol expected"  unless code.is_a?(String) || code.is_a?(Symbol)
+  raise ArgumentError,
+        "league code as string|symbol expected"  unless code.is_a?(String) || code.is_a?(Symbol)
 
   ## return league code record/item or nil
   ## check for alt code first
   season = Season( season )
   key    = LeagueCodes.norm( code )
+
+  recs = @leagues[ key ]
+
   rec    = nil
-
-  recs = @leagues[ key ] 
-
-  if recs
-    rec =  _find_by_season( recs, season )
-  end
-
-  rec   ## return nil if no code record/item found
+  rec =  _find_by_season( recs, season )   if recs
+  rec       ## return nil if no code record/item found
 end
 
 
@@ -94,6 +92,4 @@ end
 
 
 end # class LeagueConfig
-
-
 end # module Fbup

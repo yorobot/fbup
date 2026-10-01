@@ -21,7 +21,7 @@ def self.root=( dir ) @root = dir; end
 
 
 REPOS = GitHubConfig.new
-recs = read_csv( "#{SportDb::Module::Fbup.root}/config/openfootball.csv" )
+recs = read_csv( "#{Openfootball.root}/config/openfootball.csv" )
 REPOS.add( recs )
 
 ## note: datasets of format
