@@ -15,14 +15,21 @@ class GitHubSync
 ##
 ##    note - is monotree (that is, requires openfootball/england etc.
 ##                  for repo pathspecs)
-def self.root()  @root || "/sports"; end
+def self.root()  @root || '/sports'; end
 def self.root=( dir ) @root = dir; end
 ## use root_dir (or add alias) - why? why not?
 
 
-REPOS = GitHubConfig.new
-recs = read_csv( "#{Openfootball.root}/config/openfootball.csv" )
-REPOS.add( recs )
+REPOS ||= begin
+             repos = GitHubConfig.new
+             ['openfootball-world', 'openfootball-europe'].each do |name|
+                recs = read_csv( "#{Openfootball.root}/config/#{name}.csv" )
+                repos.add( recs )
+             end
+             repos
+           end
+
+
 
 ## note: datasets of format
 ##
@@ -43,7 +50,7 @@ datasets.each do |league_key, seasons|
      exit 1
   end
 
-  repos <<  "#{repo['owner']}/#{repo['name']}"
+  repos <<  "#{repo.owner}/#{repo.name}"
 end
 
 pp repos

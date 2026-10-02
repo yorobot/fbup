@@ -1,0 +1,71 @@
+###
+# /world repo
+
+code,  path,  flags
+
+
+#####
+# south america
+
+ar, south-america/argentina,
+br, south-america/brazil,
+co, south-america/colombia,
+py, south-america/paraguay,
+ec, south-america/ecuador,
+
+copa.l,  south-america/copa-libertadores,
+copa.s,  south-america/copa-libertadores,
+
+
+
+####
+#  africa
+eg,         world/africa/egypt,
+ma,         world/africa/morocco,
+dz,         world/africa/algeria,
+za,         world/africa/south-africa,
+
+afl,                   world/africa/african-football-league,
+caf.cl|caf.champs,     world/africa/champions-league,
+
+
+##########
+#   asia
+cn,  world/asia/china,
+jp,  world/asia/japan,
+
+kz,  world/asia/kazakhstan,
+
+
+############
+#  middle east
+il,  world/middle-east/israel,
+sa,  world/middle-east/saudi-arabia,
+
+#############
+#  north america
+mls,  world/north-america/major-league-soccer,
+
+mx,   world/north-america/mexico,
+
+concacaf.cl|concacaf.champs,     world/north-america/champions-league,
+
+
+##############
+#  central america
+cr,   world/central-america/costa-rica,
+
+
+######################
+#  pacific
+au,   world/pacific/australia,
+
+
+
+####
+#  intercontintental cups
+
+
+world.clubs|world.club,  club-worldcup,   classic     ## use classic setup for now - why? why not?
+
+world,   worldcup,      ## add custom  flag - why? why not?

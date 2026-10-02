@@ -1,5 +1,6 @@
+require 'cocos'
+require 'season-formats'
 
-require 'leagues'   ## pulls-in find_league_info, etc.
 
 ########################
 #  push & pull github scripts

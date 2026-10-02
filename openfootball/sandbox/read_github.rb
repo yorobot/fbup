@@ -10,7 +10,7 @@ require_relative '../lib/openfootball/github_config'
 
 
 repos = Fbup::GitHubConfig.new
-repos.add( read_csv( './config/openfootball.csv' ))
+repos.add( read_csv( './config/openfootball-world.csv' ))
 repos.add( read_csv( './config/openfootball-europe.csv' ))
 pp repos
 
@@ -24,5 +24,16 @@ pp repos['eng.5']
 
 pp repos['fr.1']
 pp repos['fr.cup']
+
+pp repos['uefa.cl']
+pp repos['uefa.champs']
+
+
+pp repos.find_repo('fr.1')
+pp repos.find_repo('fr.cup')
+
+pp repos['at.1'].classic?
+pp repos['fr.1'].classic?
+
 
 puts "bye"

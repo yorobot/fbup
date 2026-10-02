@@ -20,54 +20,47 @@ at.cup,     cup,,
 
 ####
 ##  /deutschland
-de.1,1-bundesliga,,
-de.2,2-bundesliga2,,
-de.3,3-liga3,,
-de.cup,cup,,
-de.super,super,,
-de.4.nord,4-regionalliga-nord,,
-de.4.nordost,4-regionalliga-nordost,,
-de.4.west,4-regionalliga-west,,
-de.4.suedwest,4-regionalliga-suedwest,,
-de.4.bayern,4-regionalliga-bayern,,
-# -- add alternate keys for de.4
-#   todo/fix - find a way to add alternate keys (WITHOUT repeating basename) !!!
-de.4.n,4-regionalliga-nord,,
-de.4.no,4-regionalliga-nordost,,
-de.4.w,4-regionalliga-west,,
-de.4.sw,4-regionalliga-suedwest,,
+de.1,        1-bundesliga,,
+de.2,        2-bundesliga2,,
+de.3,        3-liga3,,
+de.cup,      cup,,
+de.super,    super,,
+de.4.nord|de.4.n,       4-regionalliga-nord,,
+de.4.nordost|de.4.no,   4-regionalliga-nordost,,
+de.4.west|de.4.w,       4-regionalliga-west,,
+de.4.suedwest|de.4.sw,  4-regionalliga-suedwest,,
+de.4.bayern,            4-regionalliga-bayern,,
+
+
 
 ################
 ##  /england
-eng.2,2-championship,2004/05,
-eng.3,3-league1,2004/05,
-eng.4,4-league2,2004/05,
+eng.2,  2-championship,2004/05,
+eng.3,  3-league1,2004/05,
+eng.4,  4-league2,2004/05,
 
-eng.1,1-premierleague,1992/93,
-eng.2,2-division1,1992/93,2003/04
-eng.3,3-division2,1992/93,2003/04
-eng.4,4-division3,1992/93,2003/04
-eng.5,5-nationalleague,1992/93,
+eng.1,  1-premierleague,1992/93,
+eng.2,  2-division1,1992/93,2003/04
+eng.3,  3-division2,1992/93,2003/04
+eng.4,  4-division3,1992/93,2003/04
+eng.5,  5-nationalleague,1992/93,
 
-eng.1,1-division1,1892/93,1991/92
-eng.2,2-division2,1892/93,1991/92
-eng.3,3-division3,,1991/92
-eng.3.a,3-division3-north,,
-eng.3.b,3-division3-south,,
-eng.1,1-footballleague,1888/89,1891/92
+eng.1,    1-division1,1892/93,1991/92
+eng.2,    2-division2,1892/93,1991/92
+eng.3,    3-division3,,1991/92
+eng.3.a,  3-division3-north,,
+eng.3.b,  3-division3-south,,
+
+eng.1,    1-footballleague,1888/89,1891/92
 
 
-###
-##  fix - always use fa.cup and efl.cup - why? why not?
-eng.cup,facup,,     ## FA CuP
-eng.super,super,,    ## FA Community Shield
-eng.cup.l,eflcup,,   ## EFL Cup
-eng.cup.t,efltrophy,,  ## EFL Trophy
-eng.cup.t.ii,fatrophy,,  ## FA Trophy
 
-## -- add alternate codes / keys
-eng.fa.cup,facup,,    ## FA Cup
-eng.efl.cup,eflcup,,  ## EFL Cup
+eng.fa.cup|eng.cup,    facup,,      ## FA Cup
+eng.super,             super,,      ## FA Community Shield
+eng.efl.cup|eng.cup.l, eflcup,,     ## EFL Cup
+eng.cup.t,             efltrophy,,  ## EFL Trophy
+eng.cup.t.ii,          fatrophy,,   ## FA Trophy
+
 
 
 #######
@@ -81,35 +74,29 @@ es.super,  supercopa,,        ## check - use only super - why? why not?
 
 #####
 ## /italy
-it.1,1-seriea,,
-it.2,2-serieb,,
-it.3.a,3-seriec_a,,  ## North & Central West
-it.3.b,3-seriec_b,,  ## North & Central East
-it.3.c,3-seriec_c,,  ## South
-it.cup,cup,,
-it.super,super,,
+it.1,     1-seriea,,
+it.2,     2-serieb,,
+it.3.a,   3-seriec_a,,  ## North & Central West
+it.3.b,   3-seriec_b,,  ## North & Central East
+it.3.c,   3-seriec_c,,  ## South
+it.cup,   cup,,
+it.super, super,,
 ## it.cup.c    -- Italian Coppa Italia Serie C
 
 
 #####
 ##  /champions-league    - uefa incl. europa & conference
-uefa.cl,      cl,,
-uefa.champs,  cl,,
-uefa.el,      el,,
-uefa.europa,  el,,
-uefa.conf,    conf,,
-uefa.con,     conf,,
+uefa.cl|uefa.champs,      cl,,
+uefa.el|uefa.europa,      el,,
+uefa.con|uefa.conf,       conf,,
 
-uefa.cl.q,          clq,,
-uefa.cl.quali,      clq,,
-uefa.el.q,          elq,,
-uefa.el.quali,      elq,,
-uefa.conf.q,        confq,,
-uefa.conf.quali,    confq,,
+
+uefa.cl.q|uefa.cl.quali,        clq,,
+uefa.el.q|uefa.el.quali,        elq,,
+uefa.conf.q|uefa.conf.quali,    confq,,
+
 
 
 #####
 ##  /club-worldcup
-world.clubs,  clubworldcup,,
-world.club,   clubworldcup,,
-##  - use world.clubs or club ??
+world.club|world.clubs,  clubworldcup,,

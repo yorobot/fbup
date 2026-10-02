@@ -17,8 +17,7 @@ def self.builtin
    ## get builtin league code index (build on demand)
    @leagues ||= begin
         leagues = LeagueConfig.new
-        ['leagues',
-        ].each do |name|
+        ['leagues'].each do |name|
            recs = read_csv( "#{Openfootball.root}/config/#{name}.csv" )
            leagues.add( recs )
         end
@@ -41,6 +40,11 @@ def self.norm( code )      ## use norm_(league)code - why? why not?
 end
 
 
+## change/rename to LeaguePeriod or such - why? why not?
+Record = Struct.new( :basename,
+                     :start_season, :end_season,
+                      keyword_init: true ) do
+end
 
 
 def initialize
@@ -48,19 +52,27 @@ def initialize
 end
 
 
-def add( recs )
-  recs.each do |rec|
-    key = self.class.norm( rec['code'] )
-    @leagues[ key ] ||= []
+def add( rows )
+  rows.each do |row|
+
+    start_season = row['start_season'].to_s
+    end_season   = row['end_season'].to_s
 
     ## note: auto-change seasons to season object or nil
-    @leagues[ key ] << {  'code'         => rec['code'],
-                          'basename'     => rec['basename'],
-                          'start_season' => rec['start_season'].empty? ? nil : Season.parse( rec['start_season'] ),
-                          'end_season'   => rec['end_season'].empty?   ? nil : Season.parse( rec['end_season'] ),
-                       }
+    rec = Record.new( basename:      row['basename'],
+                      start_season:  start_season.empty? ? nil : Season.parse( start_season ),
+                      end_season:    end_season.empty?   ? nil : Season.parse( end_season ))
+
+
+    codes =  row['code'].split( /[ ]*[|][ ]*/ )
+    codes.each do |code|
+       key = self.class.norm( code )
+        @leagues[ key ] ||= []
+        @leagues[ key ] << rec
+    end
   end
 end
+
 
 
 def find_by( code:, season: )
@@ -70,7 +82,12 @@ def find_by( code:, season: )
   ## return league code record/item or nil
   ## check for alt code first
   season = Season( season )
-  key    = LeagueCodes.norm( code )
+
+  ###  note - was LeagueCodes.norm  (pulls in  leagues gem)
+  ##             keep - why? why not?
+  ### key    = LeagueCodes.norm( code )
+  key = self.class.norm( code )
+
 
   recs = @leagues[ key ]
 
@@ -82,10 +99,8 @@ end
 
 def _find_by_season( recs, season )
   recs.each do |rec|
-      start_season = rec['start_season']
-      end_season   = rec['end_season']
-      return rec  if (start_season.nil? || start_season <= season) &&
-                     (end_season.nil? || end_season >= season)
+      return rec  if (rec.start_season.nil? || rec.start_season <= season) &&
+                     (rec.end_season.nil?   || rec.end_season   >= season)
   end
   nil
 end

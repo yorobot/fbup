@@ -3,16 +3,12 @@ module Fbup
 class GitHubConfig
 
 
-  ##
-  ##  fix-fix-fix
-  ##    add classic?
-  ##         and such methods!!!
-
+   ## change Record to RepoRecord or RepoInfo/Config/Entry/Spec etc. - why? why not?
   Record = Struct.new( :owner, :name, :path, :flags,
                          keyword_init: true ) do
-     def classic?
-        ## to be done
-     end
+
+     def classic?()   flags ?  flags['classic'] : false; end
+
   end
 
 
@@ -29,14 +25,9 @@ class GitHubConfig
   ##            europe/france@myorg
 
 
-def self.read( path )
-    rows = read_csv( path )
-    new( rows )
-end
 
-def initialize( rows=nil )
+def initialize
     @table = {}
-    add( rows )  if rows
 end
 
 
@@ -74,14 +65,24 @@ def add( rows )
                     )
 
       ## check for/add flags
-      flags = row['flags'].split( /[ ]*[|][ ]*/ )
+      ##   note - use to_s to guard for nil (nil.to_s resulting "")
       ## generate/use hash for now
       ##    e.g.   v2 | flat   => { 'v2' => true, 'flat' => true } etc.
-      flags = flags.map { |flag| [flag, true] }.to_h
+      ##     note - [].to_h resulting in {}
+      flags = row['flags'].to_s
+                 .split( /[ ]*[|][ ]*/ )
+                 .map { |flag| [flag, true] }.to_h
       rec.flags = flags      if flags.size > 0
 
-      ## todo/fix - make sure/assert key is unique!!!
-    @table[ row['code'] ] = rec
+
+       codes =  row['code'].split( /[ ]*[|][ ]*/ )
+       codes.each do |code|
+          ## note - make sure/assert key is unique!!!
+           raise ArgumentError,
+             "duplicate code >#{code}< already in use for >#{row.inspect}<"   if @table.key?( code )
+
+           @table[code] = rec
+       end
   end
 end
 
@@ -115,7 +116,7 @@ alias_method :[], :find  ## keep alias - why? why not?
 
 
 def find_repo( q )
-   rec = _find( q )
+   rec = find( q )
 
    rec ? "#{rec.owner}/#{rec.name}" : nil
 end

@@ -11,7 +11,7 @@ $LOAD_PATH.unshift( './lib' )
 require 'openfootball'
 
 
-
+require 'leagues'
 require 'fifa'
 
 

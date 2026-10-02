@@ -1,5 +1,40 @@
 code,  path,  flags
 
+## note - flags - defaults for now are   v2 | flat
+##
+##  v2       - v2 format (football.txt)
+##  flat     -   add season to basename (no season directory)
+##                       e.g.  2023-24_at1.txt
+##  classic  -   use season directory AND league slug for basename
+##                       e.g. 2023-24/1-bundesliga.txt
+##
+##
+##  add archive flag  for using archive style names before 2000 or such - why? why not?
+
+
+de,   deutschland,       classic
+eng,  england,           classic
+es,   espana,            classic
+it,   italy,             classic
+
+
+at,   austria,           classic
+be,   belgium,        ## add custom flag - why? why not?
+
+
+
+uefa.cl|uefa.champs,      champions-league,    classic
+uefa.el|uefa.europa,      champions-league,    classic
+uefa.con|uefa.conf,       champions-league,    classic
+
+uefa.cl.q|uefa.cl.quali,          champions-league,    classic
+uefa.el.q|uefa.el.quali,          champions-league,    classic
+uefa.conf.q|uefa.conf.quali,      champions-league,    classic
+
+
+euro,       euro,                     ## add custom flag - why? why not?
+
+
 
 fr,   europe/france,
 
@@ -21,7 +56,6 @@ no,  europe/norway,
 dk,  europe/denmark,
 
 lu,  europe/luxembourg,
-be,  europe/belgium,
 nl,  europe/netherlands,
 cz,  europe/czech-republic,
 
@@ -56,9 +90,7 @@ rs,  europe/serbia,
 si,  europe/slovenia,
 
 
-##  todo/fix - use  xk|kos !!!
-xk,  europe/kosovo,
-kos, europe/kosovo,
+kos|xk, europe/kosovo,
 
 am,  europe/armenia,
 az,  europe/azerbaijan,
