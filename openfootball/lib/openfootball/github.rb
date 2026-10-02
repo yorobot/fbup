@@ -1,5 +1,4 @@
 
-module Fbup   ### rename module to Up - why? why not?
 
 ###
 ## todo/fix:
@@ -7,7 +6,7 @@ module Fbup   ### rename module to Up - why? why not?
 ##     will prompt yes/no  before git operations (with consequences)!!!
 
 
-
+module Openfootball
 class GitHubSync
 
 ########
@@ -18,44 +17,6 @@ class GitHubSync
 def self.root()  @root || '/sports'; end
 def self.root=( dir ) @root = dir; end
 ## use root_dir (or add alias) - why? why not?
-
-
-REPOS ||= begin
-             repos = GitHubConfig.new
-             ['openfootball-world', 'openfootball-europe'].each do |name|
-                recs = read_csv( "#{Openfootball.root}/config/#{name}.csv" )
-                repos.add( recs )
-             end
-             repos
-           end
-
-
-
-## note: datasets of format
-##
-## DATASETS = [
-##   ['it.1',    %w[2020/21 2019/20]],
-##  ['it.2',    %w[2019/20]],
-##  ['es.1',    %w[2019/20]],
-##  ['es.2',    %w[2019/20]],
-## ]
-
-def self.find_repos( datasets )
-repos = []
-datasets.each do |league_key, seasons|
-  repo  = REPOS[ league_key ]
-  ## pp repo
-  if repo.nil?
-     puts "!! ERROR - no repo config/path found for league >#{league_key}<; sorry"
-     exit 1
-  end
-
-  repos <<  "#{repo.owner}/#{repo.name}"
-end
-
-pp repos
-repos.uniq   ## note: remove duplicates (e.g. europe or world or such)
-end
 
 
 
@@ -118,5 +79,5 @@ def _git_fast_forward_if_clean( pathspec )
       proj.fast_forward
     end
 end
-end  # class GitHub
-end  # module Fbup
+end  # class GitHubSync
+end  # module Openfootball

@@ -3,19 +3,20 @@ module Fbup
 
 LEAGUE_NAMES_V2 = {
   'jp.1' => 'Japan | J1 League',
-  'cn.1' => 'China | Super League', 
-  'kz.1' => 'Kazakhstan | Premier League', 
+  'cn.1' => 'China | Super League',
+  'kz.1' => 'Kazakhstan | Premier League',
   'eg.1' => 'Egypt | Premiership',
   'ma.1' => 'Morocco | Botola Pro 1',
-  'dz.1' => 'Algeria | Ligue 1', 
+  'dz.1' => 'Algeria | Ligue 1',
   'il.1' => 'Israel | Premier League',
-  'au.1' => 'Australia | A-League',  
-############
-## international 
+  'au.1' => 'Australia | A-League',
+
+  ############
+## international
 ##    note - will fetch team pages one-by-one too to get country (codes)
   'afl'    =>  'African Football League',
-  'caf.cl' =>  'CAF Champions League', 
-} 
+  'caf.cl' =>  'CAF Champions League',
+}
 
 
 def self.main( args=ARGV )
@@ -122,9 +123,9 @@ source_path = opts[:source_path]
 ##     todo use new LeaguesetAutofiller class - why? why not?
 ##    or move code of autofiller here - why? why not?
 ##
-autofiller = ->(league_query) {           
+autofiller = ->(league_query) {
   Leagueset.autofiller( league_query, source_path: source_path )
-} 
+}
 
 datasets =   if opts[:file]
                   read_leagueset( opts[:file], autofill: autofiller )
@@ -140,15 +141,15 @@ pp datasets
 root_dir =  if opts[:test]
                opts[:test_dir]
             else
-               GitHubSync.root   # e.g. "/sports"
+               Openfootball::GitHubSync.root   # e.g. "/sports"
             end
 
 puts "  (output) root_dir: >#{root_dir}<"
 
-repos = GitHubSync.find_repos( datasets )
+repos = Openfootball.find_repos( datasets )
 puts "  #{repos.size} repo(s):"
 pp repos
-sync  =  GitHubSync.new( repos )
+sync  =  Openfootball::GitHubSync.new( repos )
 
 puts "  sync:"
 pp sync
@@ -174,7 +175,7 @@ datasets.each do |league_query, seasons|
 
 
     seasons.each do |season|
-      ## note - league info requires season 
+      ## note - league info requires season
       ##          PLUS use (canoncial) league code from info!!!
       league_info = LeagueCodes.find_by( code: league_query, season: season )
       pp league_info
@@ -182,11 +183,10 @@ datasets.each do |league_query, seasons|
       league_code  = league_info[ 'code' ]
       league_name  = league_info[ 'name' ]       # e.g. Brasileiro Série A
 
-      ### todo/fix - move basename out of league_info
-      ###               make it github/openfootball "legacy" code
-      ## basename     = league_info[ 'basename' ]   #.e.g  1-seriea
-  
-    
+      league_name = LEAGUE_NAMES_V2[league_code] || league_name
+
+
+
       filename = "#{season.to_path}/#{league_code}.csv"
       path = find_file( filename, path: source_path )
 
@@ -196,61 +196,28 @@ datasets.each do |league_query, seasons|
       puts "     #{matches.size} matches"
 
 
-      ## get repo config for flags and more
-      repo  = GitHubSync::REPOS[ league_code ]
-      flags = repo['flags'] || {}
-      classic_flag = flags['classic'] || false
-
 
       ## build
       txt =  if opts[:v1]
                ## todo - change upstream build to build_v1
                SportDb::TxtMatchWriter.build( matches )
-             else 
+             else
                SportDb::TxtMatchWriter.build_v2( matches )
              end
 
       puts txt   if opts[:debug]
 
 
-   
-      basename = nil
-      if classic_flag || opts[:classic]
-         league_config = LeagueConfig.find_by( code: league_query, season: season )
-         if league_config.nil?
-            puts "!! ERROR - basename league config required for classic format; no config found for #{league_query} #{season}; sorry"
-            exit 1
-         end
-         basename  = league_config['basename']        
-      else 
-         ## change base name to league key
-         ##   todo - fix - make gsub smarter
-         ##    change at.cup to at_cup - why? why not?
-         basename = league_code.gsub( '.', '' )
-         ## bonus - add quick fix for new league name overwrites
-         league_name = LEAGUE_NAMES_V2[league_code] || league_name
-      end
-
 
 
       buf = String.new
       buf << "= #{league_name} #{season}\n\n"
       buf << txt
-    
-      repo_path = "#{repo['owner']}/#{repo['name']}"
-      repo_path << "/#{repo['path']}"    if repo['path']  ## note: do NOT forget to add optional extra path!!!
 
-    
+      ## get (realtive openfootball) repo path for .txt file
+      repo_path  = Openfootball.mkpath( code: league_code, season: season,
+                                classic: opts[:classic] )
       outpath = "#{root_dir}/#{repo_path}"
-
-
-      outpath +=  if classic_flag || opts[:classic]
-                     "/#{season.to_path}/#{basename}.txt"
-                  else
-                     ## note - add season "inline" (to basename) or use dir
-                     "/#{season.to_path}_#{basename}.txt"
-                  end
-
 
       if opts[:dry]
         puts "   (dry) writing to >#{outpath}<..."

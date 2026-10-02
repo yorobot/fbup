@@ -9,6 +9,8 @@
 ## note - quick hack - auto-add local football timezones
 $LOAD_PATH.unshift( '/sports/sportdb/sport.db/leagues/lib' )
 $LOAD_PATH.unshift( '/sports/sportdb/sport.db/fifa/lib' )
+## note - use latest (local) if available
+$LOAD_PATH.unshift( '/sports/yorobot/fbup/fbup/lib' )
 require 'fbup'
 
 

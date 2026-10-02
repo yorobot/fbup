@@ -1,11 +1,11 @@
 require 'hoe'
-require './lib/fbup/version.rb'
+require './lib/openfootball/version.rb'
 
 
-Hoe.spec 'fbup' do
-  self.version = SportDb::Module::Fbup::VERSION
+Hoe.spec 'openfootball' do
+  self.version = Openfootball::VERSION
 
-  self.summary = "fbup - (auto-)update machinery for footbal match schedules & more in football.txt; incl. (auto-sync & commit) support for github openfootball repos & more"
+  self.summary = "openfootball - config settings for openfootball repos @ github; incl. mapping of league codes to repos and directory style and custom basename and more"
   self.description = summary
 
   self.urls = { home: 'https://github.com/sportdb/sport.db' }
@@ -20,9 +20,9 @@ Hoe.spec 'fbup' do
   self.licenses = ['Public Domain']
 
   self.extra_deps = [
-       ['sportdb-writers',    '>= 0.4.3'],
-       ['leagues',            '>= 0.2.1'],
-       ['openfootball'],
+       ['gitti'],
+       ['cocos'],
+       ['season-formats'],
   ]
 
   self.spec_extras = {

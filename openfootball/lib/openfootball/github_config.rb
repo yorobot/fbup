@@ -1,5 +1,5 @@
 
-module Fbup
+module Openfootball
 class GitHubConfig
 
 
@@ -9,6 +9,40 @@ class GitHubConfig
 
      def classic?()   flags ?  flags['classic'] : false; end
 
+
+     ## change to build_path or path_for or such - why? why not?
+     ## suffix e.g.  full (1-bundesliga-full.txt)
+     ##
+     ##   (opt)classic - true|false - lets you turn on/off classic support - keep - why? why not?
+     def mkpath( code:, season:,
+                      suffix: nil,
+                      classic: true )
+        season = Season(season)
+
+        outpath  = "#{owner}/#{name}"
+        outpath += "/#{path}"   if path   ## note: do NOT forget to add optional extra path!!!
+
+        basename = if classic? && classic == true
+                      league_config = LeagueConfig.find_by!( code: code, season: season )
+                      league_config.basename
+                   else
+                     ## change base name to league key
+                     ##   todo - fix - make gsub smarter
+                     ##    change at.cup to at_cup - why? why not?
+                     code.gsub( '.', '' )
+                   end
+
+        basename += "-#{suffix}"   if suffix
+
+
+        outpath  +=  if classic? && classic == true
+                        "/#{season.to_path}/#{basename}.txt"
+                     else
+                        ## note - add season "inline" (to basename) or use dir
+                        "/#{season.to_path}_#{basename}.txt"
+                     end
+        outpath
+     end
   end
 
 
@@ -114,12 +148,5 @@ end
 alias_method :[], :find  ## keep alias - why? why not?
 
 
-
-def find_repo( q )
-   rec = find( q )
-
-   rec ? "#{rec.owner}/#{rec.name}" : nil
-end
-
 end # class GitHubConfig
-end # module Fbup
+end # module Openfootball

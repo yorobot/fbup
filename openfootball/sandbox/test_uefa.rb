@@ -37,7 +37,7 @@ uefa.each do |country|
       puts "!! #{country.key} #{country.name} - no league info found"
    else
 
-      repo = Fbup::GitHubSync::REPOS[ league_code ]
+      repo = Openfootball[ league_code ]
       if repo.nil?
          puts "!! #{country.key} #{country.name} - no repo (info) found"
       else

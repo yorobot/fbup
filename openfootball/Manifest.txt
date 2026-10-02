@@ -1,0 +1,12 @@
+CHANGELOG.md
+Manifest.txt
+README.md
+Rakefile
+config/leagues.csv
+config/openfootball-europe.csv
+config/openfootball-world.csv
+lib/openfootball.rb
+lib/openfootball/github.rb
+lib/openfootball/github_config.rb
+lib/openfootball/league_config.rb
+lib/openfootball/version.rb

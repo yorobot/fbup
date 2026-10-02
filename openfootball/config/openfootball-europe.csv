@@ -1,8 +1,7 @@
 code,  path,  flags
 
-## note - flags - defaults for now are   v2 | flat
+## note - flags - defaults for now are   flat
 ##
-##  v2       - v2 format (football.txt)
 ##  flat     -   add season to basename (no season directory)
 ##                       e.g.  2023-24_at1.txt
 ##  classic  -   use season directory AND league slug for basename
